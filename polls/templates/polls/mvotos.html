@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>polls detail</title>
+</head>
+<body>
+    <h1>{{ question.question_text }}</h1>
+    <h3>Com número de votos!</h3>
+<table>
+    <tr>
+        <td>
+            <ul>
+                {% for choice in question.choice_set.all %}
+
+                    <li>Choices: {{ choice.choice_text }}</li>
+
+                {% endfor %}
+
+            </ul>
+        </td>
+
+        <td>
+            <ul>
+                {% for choice in question.choice_set.all %}
+
+                 <li>Nº de votos: {{ choice.votes }}</li>
+
+                {% endfor %}
+
+            </ul>
+        </td>
+    </tr>
+
+
+</table>
+
+
+    <a href="{% url 'index' %}">Voltar</a>
+</body>
+</html>
