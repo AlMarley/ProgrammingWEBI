@@ -10,17 +10,20 @@
 <table>
     <tr>
         <td>
-            <ul>
-                {% for choice in question.choice_set.all %}
+            <form action="{% url 'votemm' question.id %}" method="post">{% csrf_token %}
 
-                    <li>Choices: {{ choice.choice_text }}</li>
+                <ul>
+                    {% for choice in question.choice_set.all %}
+                        <li><input type="radio" name="choice" value="{{ choice.id }}">Choices: {{ choice.choice_text }}</li>
+                    {% endfor %}
 
-                {% endfor %}
-
-            </ul>
+                </ul>
+                <input type="submit" value="Votar">
+           </form>
         </td>
 
         <td>
+
             <ul>
                 {% for choice in question.choice_set.all %}
 
@@ -29,6 +32,7 @@
                 {% endfor %}
 
             </ul>
+
         </td>
     </tr>
 
