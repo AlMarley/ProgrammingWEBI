@@ -11,7 +11,8 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        return Question.objects.all().order_by('-pub_date')[:5]
+        return Question.objects.filter(is_public=True).order_by('-pub_date')[:5]
+        #return Question.objects.all().order_by('-pub_date')[:5]
 
 
 
